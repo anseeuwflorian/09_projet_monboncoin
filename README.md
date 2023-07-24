@@ -1,13 +1,14 @@
-Projet "Mon Bon Coin"
+# Projet "Mon Bon Coin"
 
-# 1. La Base de Données
+### 1. La Base de Données
+    - monconcoin
 
-### 1.1 Les Tables
+#### 1.1 Tables
     - users
     - products
     - categories
 
-#### a. Users table
+#### a. users
     - idUser
     - role
     - login
@@ -17,7 +18,7 @@ Projet "Mon Bon Coin"
     - adress
     - cp
     - city
-#### b. Products table
+#### b. products
     - idProduct
     - idCategory
     - idUser
@@ -27,6 +28,6 @@ Projet "Mon Bon Coin"
     - image
     - date
 
-#### c. Categories table
+#### c. categories
     - idCategory
     - title
