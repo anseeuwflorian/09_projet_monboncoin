@@ -13,7 +13,10 @@ class Db{
     static function getDb(){
         if(!self::$db){
             try {
-                $config = file_get_contents("../App/config.json");
+                // chemin vers config.json depuis le dossier public
+                // $config = file_get_contents("../App/config.json");
+                // chemin vers config.json depuis le dossier racine
+                $config = file_get_contents("App/config.json");
                 // var_dump($config); // on reçoit une chaîne de caractère
                 // pour pouvoir utiliser un fichier json il faut le décoder
                 $config = json_decode($config);
@@ -29,6 +32,7 @@ class Db{
 
 }
 
-$newObject = new Db;
+// pour tester
+// $test = new Db;
 
-$newObject::getDb();
+// $test::getDb();
