@@ -11,9 +11,10 @@ class Users extends Db
 
     // méthode de lecture
     // 1. méthode pour trouver tous les users
-    public static function findAll()
+    public static function findAll($order = null)
     {
         $request = 'SELECT * FROM users';
+        $order ? $request .= " ORDER BY lastname $order" : null;
         $response = self::getDb()->prepare($request);
         $response->execute();
 

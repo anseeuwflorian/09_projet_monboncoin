@@ -2,7 +2,9 @@
 
 use App\Db;
 use Models\Users;
+use Models\Products;
 use Models\Categories;
+
 
 
 
@@ -20,7 +22,7 @@ Comme nous ne voulons pas faire des require() toutes les 2 minutes, nous allons 
 <h2>Utilisation de la méthode findAll() sur users</h2>
 
 <?php
-$users = Users::findAll();
+$users = Users::findAll('DESC');
 
 var_dump($users);
 ?>
@@ -103,7 +105,7 @@ var_dump(Categories::findById(2));
 <?php
 $data = ['Bricolage'];
 
-Categories::create($data);
+// Categories::create($data);
 ?>
 
 <h2>Utilisation de la méthode update() sur categories</h2>
@@ -134,3 +136,55 @@ Categories::create($data);
 // $categories = Categories::delete(1);   
 ?>
 
+<h2>Utilisation de la méthode findAll() sur products</h2>
+
+<?php
+$products = Products::findAll('DESC');
+
+var_dump($products);
+?>
+
+<h2>Utilisation de la méthode findById() sur products</h2>
+
+<?php
+$products = Products::findById(1);
+
+var_dump($products);
+?>
+
+<h2>Utilisation de la méthode findByUser() sur products</h2>
+
+<?php
+$products = Products::findByUser(2);
+
+var_dump($products);
+?>
+
+<h2>Utilisation de la méthode findByCat() sur products</h2>
+
+<?php
+$products = Products::findByCat(2);
+
+var_dump($products);
+?>
+
+<h2>Utilisation de la méthode create() sur products</h2>
+
+<?php
+$data = [1, 1, 'Chaise de table', 'Chais en bois sculptée', 30, 'chaise.jpg'];
+// Products::create($data);
+?>
+
+<h2>Utilisation de la méthode update() sur products</h2>
+
+<?php
+$data = [2, 2, 'Chaise de table', 'Chais en bois sculptée', 30, 'chaise.jpg', 8];
+
+// Products::update($data);
+?>
+
+<h2>Utilisation de la méthode delete() sur products</h2>
+
+<?php
+// Products::delete(8);
+?>
