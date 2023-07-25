@@ -4,5 +4,5 @@
     "dbName": "monboncoin",
     "user": "root",
     "password": "",
-    "baseSite": "/09_projet_monboncoin/public/"
+    "baseSite": "/"
 }
