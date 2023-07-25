@@ -136,6 +136,8 @@ $data = ['Bricolage'];
 // $categories = Categories::delete(1);   
 ?>
 
+<hr>
+
 <h2>Utilisation de la méthode findAll() sur products</h2>
 
 <?php
@@ -171,14 +173,14 @@ var_dump($products);
 <h2>Utilisation de la méthode create() sur products</h2>
 
 <?php
-$data = [1, 1, 'Chaise de table', 'Chais en bois sculptée', 30, 'chaise.jpg'];
+$data = [2, 2, 'Chaise de table', 'Chaise en bois sculptée', 30, 'chaise.jpg'];
 // Products::create($data);
 ?>
 
 <h2>Utilisation de la méthode update() sur products</h2>
 
 <?php
-$data = [2, 2, 'Chaise de table', 'Chais en bois sculptée', 30, 'chaise.jpg', 8];
+$data = [2, 2, 'Chaise de table', 'Chaise en bois sculptée', 30, 'chaise.jpg', 10];
 
 // Products::update($data);
 ?>

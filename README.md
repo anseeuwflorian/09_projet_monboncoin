@@ -31,5 +31,3 @@
 #### c. categories
     - idCategory
     - title
-        - Maison
-        - Jardin

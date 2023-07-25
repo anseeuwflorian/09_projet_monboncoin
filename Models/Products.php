@@ -62,16 +62,14 @@ class Products extends Db{
         return $response->execute($data);
     }
 
-    public static function update(array $data)
-    {
+    public static function update(array $data){
         $request = "UPDATE products SET idCategory = ?, idUser = ?, title = ?, description = ?, price = ?, image = ? WHERE idProduct = ?";
         $response = self::getDb()->prepare($request);
 
         return $response->execute($data);
     }
 
-    public static function delete($id)
-    {
+    public static function delete($id){
         $request = "DELETE FROM products WHERE idProduct = :id";
         $response = self::getDb()->prepare($request);
         $response->bindValue(':id', $id, PDO::PARAM_INT);
