@@ -18,7 +18,7 @@ class Products extends Db{
         // if($order){
         //     $request .= "ORDER BY price $order";
         // }
-        $order ? $request .= " ORDER BY price $order" : null;
+        $order ? $request .= " ORDER BY $order" : null;
         $limit ? $request .= " LIMIT $limit" : null;
         $response = self::getDb()->prepare($request);
         $response->execute();
@@ -46,7 +46,7 @@ class Products extends Db{
 
     public static function findByCat($idCategory, $order = null){
         $request = 'SELECT *, products.title AS productsTitle, categories.title AS catTitle FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE products.idCategory = :idCategory'; // ici on a un idCategory dans les 2 tables, il faut donc préciser dans quelle table il faut aller le chercher avec la syntaxe  table.champs
-        $order ? $request .= "ORDER BY price $order" : null;
+        $order ? $request .= "ORDER BY $order" : null;
         $response = self::getDb()->prepare($request);
         $response->bindValue(':idCategory', $idCategory, PDO::PARAM_INT);
         $response->execute();
