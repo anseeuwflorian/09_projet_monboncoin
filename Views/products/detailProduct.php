@@ -16,8 +16,12 @@
                 <div class="col-12 col-md-6">
                     <iframe src="https://www.google.com/maps?q=<?= $user['city'] ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" width='100%' height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="p-2"></iframe>
                 </div>
-
             </div>
+            <p>Description:</p>
+            <p><?= $product['description'] ?></p>
+            <p>Prix:</p>
+            <p><?= $product['price'] ?> €</p>
         </div>
+        <a href="/panier" class="btn btn-success m-1">Ajouter au panier</a>
     </div>
 <?php endif ?>
