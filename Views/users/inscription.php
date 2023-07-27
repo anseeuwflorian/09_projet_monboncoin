@@ -55,6 +55,8 @@
                 <input type="password" name="confirm" id="confirm" placeholder="Confirmez votre mot de passe" class="form-control">
             </div>
         </div>
-        <button class="btn btn-success w-100">S'inscrire</button>
+        <div class="text-center">
+            <button class="btn btn-success w-100">S'inscrire</button>
+        </div>
     </form>
 </div>

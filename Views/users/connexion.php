@@ -25,6 +25,6 @@
     </form>
     <div class="text-center pt-5">
         <p><b> Pas encore de compte ? </b></p>
-        <a href="/inscription" class="btn btn-primary w-25">Insciption</a>
+        <a href="/inscription" class="btn btn-primary w-25">Inscription</a>
     </div>
 </div>
