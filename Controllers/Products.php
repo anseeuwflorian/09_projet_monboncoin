@@ -46,7 +46,6 @@ class Products extends Controller{
 
     
     public static function affichageProducts(){
-        
         // pour mon formulaire de tri, je récupère toutes les catégories
         $categories = \Models\Categories::findAll();
         
