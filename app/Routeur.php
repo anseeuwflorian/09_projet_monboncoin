@@ -16,7 +16,8 @@ class Routeur{
         '/connexion'=> ['controller' => 'Users', 'action' => 'connexion'],
         '/deconnexion'=> ['controller' => 'Users', 'action' => 'deconnexion'],
         '/panier'=> ['controller' => 'Panier', 'action' => 'gestionPanier'],
-        '/profil'=>['controller' => 'Users', 'action' => 'profil']
+        '/profil'=>['controller' => 'Users', 'action' => 'profil'],
+        '/recherche'=>['controller' => 'Products', 'action' => 'recherche']
     ];
     // je créer une méthode app qui est la méthode centrale de mon site, le fichier index.php ne fera qu'une seule chose:
         // exécuter cette méthode

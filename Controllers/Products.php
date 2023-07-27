@@ -76,4 +76,8 @@ class Products extends Controller{
             
             // public static function suppProduct(){
                 //     echo "vous êtes dans la méthode suppProduct";
-            }
+
+    public static function recherche(){
+        echo "vous êtes dans la méthode recherche";
+    }
+}

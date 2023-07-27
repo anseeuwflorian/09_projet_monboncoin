@@ -1,14 +1,5 @@
 <!-- <?php var_dump($products) ?> -->
 
-<?php if (isset($_SESSION['message'])) : ?>
-    <?php $message = $_SESSION['message'];
-    unset($_SESSION['message']); ?>
-    <div class="alert alert-dismissible alert-info">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong> <?= $message ?> </strong>
-    </div>
-<?php endif ?>
-
 <div class="container">
     <?php if (isset($categories)) : ?>
         <div class="container pb-5">
@@ -28,7 +19,6 @@
             </form>
         </div>
     <?php endif ?>
-
 
     <div class="row justify-content-around">
         <?php foreach ($products as $product) : ?>

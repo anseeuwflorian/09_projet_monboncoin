@@ -24,7 +24,7 @@ class Users extends Controller
             if (password_verify($pass, $user['password'])) {
                 // echo 'vous êtes connecté';
                 // l'utilisateur est correct
-                $_SESSION['message'] = "Salut, content de vous revoir";
+                $_SESSION['message'] = "Bienvenue, content de vous revoir";
                 $_SESSION['user'] = [
                     'role' => $user['role'],
                     'id' => $user['idUser'],
@@ -60,8 +60,8 @@ class Users extends Controller
         $pattern = '/^.{8,}$/';
         // on vérifie que tous les champs soient remplis
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (empty($_POST['login'])) {
-                $errMsg .= 'Merci de saisir votre email<br>';
+            if (empty($_POST['login']) || !filter_var($_POST['login'], FILTER_VALIDATE_EMAIL)) {
+                $errMsg .= 'Merci de saisir un email valide<br>';
             }
             if (empty($_POST['firstname'])) {
                 $errMsg .= 'Merci de saisir votre prénom<br>';
@@ -84,10 +84,24 @@ class Users extends Controller
             if (empty($_POST['confirm'])) {
                 $errMsg .= 'Merci de confirmer le mot de passe<br>';
             }
-            // on vérifie que les deux password correspondent
-            if ($_POST['password'] == $_POST['confirm']) {
+            // on vérifie que les deux password correspondent et min 8 char
+            if ($_POST['password'] == $_POST['confirm'] && preg_match($pattern, $_POST['password'])) {
                 self::security();
-                var_dump($_POST);
+                $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                // var_dump($_POST);
+                // je créer un tableau qui contient les infos du user
+                $dataUser = [];
+                foreach($_POST as $key => $value){
+                    if($key != 'confirm'){
+                        $dataUser[] = $value;
+                    }
+                }
+                // var_dump($dataUser);
+                // en enregistre en BDD
+                \Models\Users::create($dataUser);
+                $_SESSION['message'] = 'Votre compte a bien été créé, vous pouvez maintenant vous connecter';
+                header('Location: /connexion');
+
             } else {
                 $errMsg = "Les deux mots de passe sont différents";
             }

@@ -39,7 +39,7 @@
                             </li>
                         </ul>
                     <?php endif ?>
-                    <form class="d-flex">
+                    <form class="d-flex" action="/recherche" method="POST">
                         <input class="form-control me-sm-2" type="search" placeholder="Recherche">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
                     </form>
