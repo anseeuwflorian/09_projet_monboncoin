@@ -22,11 +22,22 @@
                             <a class="nav-link" href="/products">Tous les produits</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-5">
-                            <a class="btn btn-secondary" href="/connexion">Connexion</a>
-                        </li>
-                    </ul>
+                    <?php if (isset($_SESSION['user'])) : ?>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-secondary" href="/deconnexion">Déconnexion</a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="btn btn-secondary" href="/profil">Profil</a>
+                            </li>
+                        </ul>
+                    <?php else : ?>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item mx-5">
+                                <a class="btn btn-secondary" href="/connexion">Connexion</a>
+                            </li>
+                        </ul>
+                    <?php endif ?>
                     <form class="d-flex">
                         <input class="form-control me-sm-2" type="search" placeholder="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>

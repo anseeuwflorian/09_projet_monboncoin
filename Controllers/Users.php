@@ -20,7 +20,16 @@ class Users extends Controller{
                 $pass = htmlspecialchars(trim($_POST['password']));
             }
             if(password_verify($pass, $user['password'])){
-                echo 'vous êtes connecté';
+                // echo 'vous êtes connecté';
+                // l'utilisateur est correct
+                $_SESSION['message'] = "Salut, content de vous revoir";
+                $_SESSION['user'] = [
+                    'role' => $user['role'],
+                    'id' => $user['idUser'],
+                    'firstname' => $user['firstname']
+                ];
+                // quand l'utilisateur est connecté, on le redirige vers la page (route) de notre choix
+                header('Location: /');
             }else{
                 $errMsg = "Le login et/ou le mot de passe n'est pas correct";
             }
@@ -32,12 +41,14 @@ class Users extends Controller{
         ]);
     }
 
-    public static function inscription(){
-        echo "vous êtes dans la méthode inscription";
-    }
-
+    // public static function inscription(){
+    //     echo "vous êtes dans la méthode inscription";
+    // }
 
     public static function deconnexion(){
-        echo "vous êtes dans la méthode deconnexion";
+        unset($_SESSION['user']);
+        header('Location: /');
+        $_SESSION['message'] = "Au revoir et à bientôt";
     }
+    
 }
