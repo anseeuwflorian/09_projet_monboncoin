@@ -41,14 +41,23 @@ class Users extends Controller{
         ]);
     }
 
-    // public static function inscription(){
-    //     echo "vous êtes dans la méthode inscription";
-    // }
-
+    
     public static function deconnexion(){
         unset($_SESSION['user']);
         header('Location: /');
         $_SESSION['message'] = "Au revoir et à bientôt";
     }
     
+    public static function inscription(){
+        // echo "vous êtes dans la méthode inscription";
+        $_SESSION['message'] = "Veuillez remplir le formulaire pour vous inscrire";
+        $errMsg = "";
+
+
+
+        self::render('users/inscription', [
+            'title' => 'INSCRIPTION',
+            'erreurMessage' => $errMsg
+        ]);
+    }
 }
