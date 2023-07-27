@@ -1,6 +1,11 @@
 <?php
 
 use App\Routeur;
+use Models\Users;
+
+// pour gérer les connexions, on utilise la session
+session_start();
+// j'ai maintenant accès à $_SESSION dans toute mon app
 
 //ce fichier est le point d'entrée de notre site
 
@@ -17,3 +22,13 @@ require_once('../autoloader.php');
 // on appelle la méthode app()
 $routeur = new Routeur;
 $routeur->app();
+
+
+
+
+// $pass = password_hash('12345678', PASSWORD_DEFAULT);
+
+// $data = ['user1@gmail.com', $pass, 'user', 'user1', '12 rue de Paris', '93100', 'Montreuil', 2];
+
+// Users::update($data);
+?>
