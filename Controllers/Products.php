@@ -18,7 +18,6 @@ class Products extends Controller{
     
     
     // méthode pour récup un produit par son id et l'envoyer à la vue detailProduct
-    
     public static function detailProduct(){
         // je créer une variable pour stocker les erreurs potentielles
         $err = "";
@@ -66,9 +65,36 @@ class Products extends Controller{
 
     }
     
-    // public static function ajoutProduct(){
-        //     echo "vous êtes dans la méthode ajoutProduct";
-        // }
+    // méthode pour ajouter un produit
+    public static function ajoutProduct(){
+        $errMsg ="";
+        // traitement du form
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if (empty($_POST['idCategory'])) {
+                $errMsg .= 'Merci de choisir une catégorie<br>';
+            }
+            if (empty($_POST['title'])) {
+                $errMsg .= 'Merci de saisir un nom pour votre produit<br>';
+            }
+            if (empty($_POST['price'])) {
+                $errMsg .= 'Merci de saisir un prix pour votre produit<br>';
+            }
+            if (empty($_POST['description'])) {
+                $errMsg .= 'Merci de saisir la description de votre produit<br>';
+            }
+            if (empty($_FILES['name'])){
+                $errMsg .= 'Merci de choisir l\'image de votre produit';
+            }
+
+        }
+        // je récupère toutes les cat
+        $categories = \Models\Categories::findAll();
+        self::render('products/formProduct', [
+            'title' => 'Créer une annonce',
+            'categories' => $categories,
+            'errMsg' => $errMsg
+        ]);
+    }
         
         // public static function modifProduct(){
             //     echo "vous êtes dans la méthode modifProduct";
@@ -80,4 +106,6 @@ class Products extends Controller{
     public static function recherche(){
         echo "vous êtes dans la méthode recherche";
     }
+
+
 }

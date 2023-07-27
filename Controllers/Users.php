@@ -111,4 +111,11 @@ class Users extends Controller
                 'erreurMessage' => $errMsg
             ]);
     }
+
+    public static function profil(){
+        self::render('users/profil', [
+            'title' => 'Votre profil utilisateur'
+        ]);
+    }
+
 }
