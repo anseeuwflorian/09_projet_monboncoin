@@ -9,6 +9,7 @@ require_once('header.php');
 <?php if (isset($_SESSION['message'])) : ?>
     <?php $message = $_SESSION['message'];
     unset($_SESSION['message']); ?>
+    
     <div class="alert alert-dismissible alert-info w-75 mx-auto text-center">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         <strong> <?= $message ?> </strong>

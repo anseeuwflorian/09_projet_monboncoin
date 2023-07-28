@@ -30,6 +30,7 @@ class Users extends Controller
                     'id' => $user['idUser'],
                     'firstname' => $user['firstname']
                 ];
+                session_write_close();
                 // quand l'utilisateur est connecté, on le redirige vers la page (route) de notre choix
                 header('Location: /');
             } else {
@@ -100,6 +101,7 @@ class Users extends Controller
                 // en enregistre en BDD
                 \Models\Users::create($dataUser);
                 $_SESSION['message'] = 'Votre compte a bien été créé, vous pouvez maintenant vous connecter';
+                session_write_close();
                 header('Location: /connexion');
 
             } else {
