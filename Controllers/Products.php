@@ -125,16 +125,39 @@ class Products extends Controller{
         ]);
     }
         
-        // public static function modifProduct(){
-            //     echo "vous êtes dans la méthode modifProduct";
-            // }
-            
-            // public static function suppProduct(){
-                //     echo "vous êtes dans la méthode suppProduct";
+    public static function modifProduct(){
+    $errMsg = "";
+    // on récup toutes les cat
+    $categories = \Models\Categories::findAll();
 
-    public static function recherche(){
-        echo "vous êtes dans la méthode recherche";
+    // je fais appel au modèle Products pour récup le produit à modifier
+    $idProduct = $_GET['id'];
+    $product = \Models\Products::findById($idProduct);
+    // j'appelle la bonne vue SI je suis connecté
+    if(isset($_SESSION['user']) &&
+    ($_SESSION['user']['role'] == 1 ||
+    $_SESSION['user']['id'] == $product['idUser'])){
+        self::render('products/formProduct', [
+            'title' => 'Modifier une annonce',
+            'categories' => $categories,
+            'errMsg' => $errMsg,
+            'product' => $product
+        ]);
+    }else{
+        self::render('users/connexion', [
+            'title' => 'Merci de vous connecter pour modifier une annonce',
+            'messageErreur' => $errMsg
+        ]);
+
     }
+    }
+
+// public static function suppProduct(){
+//     echo "vous êtes dans la méthode suppProduct";
+
+// public static function recherche(){
+// echo "vous êtes dans la méthode recherche";
+    // }
 
 
 }

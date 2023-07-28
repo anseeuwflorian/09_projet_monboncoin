@@ -113,8 +113,18 @@ class Users extends Controller
     }
 
     public static function profil(){
+        // je récup tous les produits de l'utilisateur connecté
+        if($_SESSION['user']['role'] == 1){ // je suis admin donc je récup tous les produits
+            $products = \Models\Products::findAll();
+        }else{
+            $idUser = $_SESSION['user']['id'];
+            $products = \Models\Products::findByUser($idUser);
+        }
+
+
         self::render('users/profil', [
-            'title' => 'Votre profil utilisateur'
+            'title' => 'Votre profil utilisateur',
+            'products' => $products
         ]);
     }
 
