@@ -1,6 +1,7 @@
 <!-- ////////////////////// -->
 <?php var_dump($_POST);
-var_dump($_FILES); ?>
+var_dump($_FILES);
+var_dump($_SESSION) ?>
 <div class="container">
     <?php if ($errMsg) : ?>
         <div class="alert alert-dismissible alert-warning">
@@ -35,7 +36,7 @@ var_dump($_FILES); ?>
     <div class="form-group">
         <label for="image" class="form-label">Photo</label>
         <input type="file" name="image" id="image" class="form-control">
-        <small class="form-text text-muted">(max 3Mo, format accépté : jpg, jpeg, png)</small>
+        <small class="form-text text-muted">(max 3Mo, format accépté : jpg, jpeg, png, webp)</small>
     </div>
     <button type="submit" class="btn btn-success mt-3 w-25">Mettre mon produit en vente</button>
 </form>

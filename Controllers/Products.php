@@ -82,8 +82,37 @@ class Products extends Controller{
             if (empty($_POST['description'])) {
                 $errMsg .= 'Merci de saisir la description de votre produit<br>';
             }
-            if (empty($_FILES['name'])){
+            if (empty($_FILES['image']['name'])){
                 $errMsg .= 'Merci de choisir l\'image de votre produit';
+            }
+            // les contrôles sur l'image
+            if($_FILES['image']['size'] < 3000000 && 
+            ($_FILES['image']['type'] == 'image/jpeg' ||
+            $_FILES['image']['type'] == 'image/jpg' ||
+            $_FILES['image']['type'] == 'image/png' ||
+            $_FILES['image']['type'] == 'image/webp')){
+                //on sécurise les saisies
+                self::security();
+                // on renomme l'image pour avoir un nom unique
+                $photoName = uniqid() . $_FILES['image']['name'];
+                // echo $photoName;
+                // on copie l'image sur le serveur
+                copy($_FILES['image']['tmp_name'], "../Public/image/" . $photoName);
+                // on peut maintenant enregistrer l'image en BDD
+                $dataProduct = [
+                $_POST['idCategory'], 
+                $_SESSION['user']['id'],
+                $_POST['title'],
+                $_POST['description'],
+                $_POST['price'],
+                $photoName];
+
+                \Models\Products::create($dataProduct);
+                $_SESSION['message'] = "Votre annonce a bien été créée, vous pouvez maintenant la gérer depuis votre Profil ";
+                // header('Location: /profil');
+
+            }else{
+                $errMsg = 'Votre image n\'est pas au format demandé';
             }
 
         }
